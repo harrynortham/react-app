@@ -7,8 +7,15 @@ import Dashboard from "./Pages/Dashboard";
 import Login from "./Pages/Authentication/Login";
 import Register from "./Pages/Authentication/Register";
 import Logout from "./Pages/Authentication/Logout";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import Loader from "./Components/Loader";
 function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="App">
       <Header />
